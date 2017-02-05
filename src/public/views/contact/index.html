@@ -1,0 +1,28 @@
+<p>
+    <a ng-click="vm.add()">Add new</a>
+</p>
+
+<table class="table table-hover">
+    <caption>Contacts</caption>
+    <tr>
+        <th>First name</th>
+        <th>Middle name</th>
+        <th>Last name</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="contact in vm.contacts">
+        <td>{{ contact.firstName }}</td>
+        <td>{{ contact.middleName }}</td>
+        <td>{{ contact.lastName }}</td>
+        <td>
+            <div class="dropdown">
+                <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="vm.details(contact._id)">Details</a></li>
+                    <li><a ng-click="vm.remove(contact._id)">Remove</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>

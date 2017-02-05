@@ -1,0 +1,26 @@
+<h2>Details</h2>
+
+<div>
+    <h4>Contact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>First name</dt>
+        <dd>{{ vm.model.firstName }}</dd>
+
+        <dt>Middle name</dt>
+        <dd>{{ vm.model.middleName }}</dd>
+
+        <dt>Last name</dt>
+        <dd>{{ vm.model.lastName }}</dd>
+
+        <dt>Phone</dt>
+        <dd>{{ vm.model.phone }}</dd>
+
+        <dt>Email</dt>
+        <dd>{{ vm.model.email }}</dd>
+    </dl>
+</div>
+
+<p>
+    <a ng-click="vm.edit()">Edit</a> | <a ng-click="vm.cancel()">Cancel</a>
+</p>

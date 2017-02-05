@@ -1,0 +1,29 @@
+<h2>Remove</h2>
+
+<h3>Are you sure to want remove this record?</h3>
+
+<div>
+    <h4>Contact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>First name</dt>
+        <dd>{{ vm.model.firstName }}</dd>
+
+        <dt>Middle name</dt>
+        <dd>{{ vm.model.middleName }}</dd>
+
+        <dt>Last name</dt>
+        <dd>{{ vm.model.lastName }}</dd>
+
+        <dt>Phone</dt>
+        <dd>{{ vm.model.phone }}</dd>
+
+        <dt>Email</dt>
+        <dd>{{ vm.model.email }}</dd>
+    </dl>
+
+    <div class="form-actions no-color">
+        <a ng-click="vm.remove(vm.model._id)" class="btn btn-default">Delete</a>
+        <a ng-click="vm.cancel()" class="btn btn-small">Cancel</a>
+    </div>
+</div>

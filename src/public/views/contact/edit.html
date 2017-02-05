@@ -1,0 +1,54 @@
+<h2>Edit</h2>
+
+<form name="form" novalidate ng-submit="vm.save()">
+    <div class="form-horizontal">
+        <h4>Contact</h4>
+        <hr />
+
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$invalid }">
+            <label for="firstName" class="control-label col-md-2">First name</label>
+            <div class="col-md-10">
+                <input type="text" name="firstName" class="form-control" required ng-model="vm.model.firstName" />
+                <span class="text-danger help-block" ng-show="form.firstName.$error.required">(*) Required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="middleName" class="control-label col-md-2">Middle name</label>
+            <div class="col-md-10">
+                <input type="text" name="middleName" class="form-control" ng-model="vm.model.middleName" />
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$invalid }">
+            <label for="lastName" class="control-label col-md-2">Last name</label>
+            <div class="col-md-10">
+                <input type="text" name="lastName" class="form-control" required ng-model="vm.model.lastName" />
+                <span class="text-danger help-block" ng-show="form.lastName.$error.required">(*) Required</span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.phone.$invalid }">
+            <label for="phone" class="control-label col-md-2">Phone</label>
+            <div class="col-md-10">
+                <input type="text" name="phone" class="form-control" required ng-model="vm.model.phone" />
+                <span class="text-danger help-block" ng-show="form.phone.$error.required">(*) Required</span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.email.$invalid }">
+            <label for="email" class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                <input type="text" name="email" class="form-control" required ng-model="vm.model.email" />
+                <span class="text-danger help-block" ng-show="form.email.$error.required">(*) Required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" ng-disabled="!form.$valid" class="btn btn-primary" />
+                <a ng-click="vm.cancel()">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
