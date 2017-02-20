@@ -10,8 +10,30 @@
 
         var apiUrl = "/api/";
 
-        svc.getContacts = function () {
-            return $http.get(apiUrl + "contact");
+        svc.getContacts = function (fields) {
+            var queryString = [];
+
+            if (fields.pageSize) {
+                queryString.push("pageSize=" + fields.pageSize);
+            }
+
+            if (fields.firstName) {
+                queryString.push("firstName=" + fields.firstName);
+            }
+
+            if (fields.middleName) {
+                queryString.push("middleName=" + fields.middleName);
+            }
+
+            if (fields.lastName) {
+                queryString.push("lastName=" + fields.lastName);
+            }
+
+            var url = apiUrl + "contact";
+
+            var fullUrl = queryString.length == 0 ? url : [url, "?", queryString.join("&")].join("");
+
+            return $http.get(fullUrl);
         };
 
         svc.getContact = function (id) {

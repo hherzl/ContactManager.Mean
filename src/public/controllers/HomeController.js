@@ -3,19 +3,29 @@
 
     app.controller("HomeController", HomeController);
 
-    HomeController.$inject = ["$location", "RepositoryService"];
+    HomeController.$inject = ["$location", "toaster", "RepositoryService"];
 
-    function HomeController($location, repository) {
+    function HomeController($location, toaster, repository) {
         var vm = this;
 
         vm.contacts = [];
 
-        repository.getContacts().then(function (result) {
+        vm.search = {};
+
+        toaster.pop("wait", "Loading contacts...");
+
+        repository.getContacts(vm.search).then(function (result) {
             vm.contacts = result.data;
         });
 
         vm.add = function () {
             $location.path("/contact/add/");
+        };
+
+        vm.search = function () {
+            repository.getContacts(vm.search).then(function (result) {
+                vm.contacts = result.data;
+            });
         };
         
         vm.details = function (id) {

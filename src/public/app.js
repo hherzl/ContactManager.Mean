@@ -1,5 +1,7 @@
 var module = angular.module("contactManager", [
-    "ngRoute"
+    "ngRoute",
+    "ngAnimate",
+    "toaster"
 ]);
 
 (function (app) {
