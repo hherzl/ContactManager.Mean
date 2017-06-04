@@ -3,9 +3,9 @@
 
     app.controller("ContactEditController", ContactEditController);
 
-    ContactEditController.$inject = ["$routeParams", "$location", "RepositoryService"];
+    ContactEditController.$inject = ["$routeParams", "$location", "toaster", "RepositoryService"];
 
-    function ContactEditController($routeParams, $location, repository) {
+    function ContactEditController($routeParams, $location, toaster, repository) {
         var vm = this;
 
         var id = $routeParams.id;
@@ -17,7 +17,11 @@
         });
 
         vm.save = function () {
+            toaster.pop("wait", "Saving...");
+
             repository.updateContact(id, vm.model).then(function (result) {
+                toaster.pop("success", "The changes were saved successfully");
+
                 $location.path("/contact/details/" + id);
             });
         };

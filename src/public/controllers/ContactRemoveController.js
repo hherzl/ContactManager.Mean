@@ -3,9 +3,9 @@
 
     app.controller("ContactRemoveController", ContactRemoveController);
 
-    ContactRemoveController.$inject = ["$location", "$routeParams", "RepositoryService"];
+    ContactRemoveController.$inject = ["$location", "$routeParams", "toaster", "RepositoryService"];
 
-    function ContactRemoveController($location, $routeParams, repository) {
+    function ContactRemoveController($location, $routeParams, toaster, repository) {
         var vm = this;
 
         var id = $routeParams.id;
@@ -17,7 +17,11 @@
         });
 
         vm.remove = function () {
+            toaster.pop("wait", "Removing...");
+
             repository.deleteContact(id).then(function (result) {
+                toaster.pop("success", "The contact was removed successfully");
+
                 $location.path("/");
             });
         };
